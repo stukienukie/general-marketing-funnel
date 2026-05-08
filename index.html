@@ -58,7 +58,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   /* VIDEO */
   .video-wrap { position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; cursor: pointer; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 24px 70px rgba(0,0,0,0.7); transition: transform 0.2s ease, box-shadow 0.2s ease; }
   .video-wrap:hover { transform: translateY(-3px); box-shadow: 0 36px 90px rgba(0,0,0,0.85); }
-  .thumb-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .thumb-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; filter: blur(10px); transform: scale(1.05); transition: filter 0.7s ease, transform 0.7s ease; }
+  #videoWrap.unlocked .thumb-img { filter: blur(0); transform: scale(1); }
   .thumb-vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.25) 100%); z-index: 1; }
   .play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 2; }
   .play-circle { width: 80px; height: 80px; background: var(--orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: pulse 2.4s ease-out infinite; transition: transform 0.2s ease, background 0.2s ease; }
@@ -458,6 +459,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (videoUnlocked) return;
     videoUnlocked = true;
     document.getElementById('overlay').classList.remove('open');
+    document.getElementById('videoWrap').classList.add('unlocked');
 
     var frame = document.getElementById('videoFrame');
     frame.style.display = 'block';
