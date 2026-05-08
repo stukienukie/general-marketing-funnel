@@ -478,6 +478,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var s2 = document.getElementById('step2-section');
     s2.style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'lead_form_submitted' });
   }
 
   function submitForm() {
